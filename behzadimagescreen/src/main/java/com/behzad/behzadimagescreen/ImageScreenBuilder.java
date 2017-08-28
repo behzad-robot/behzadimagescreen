@@ -1,12 +1,15 @@
 package com.behzad.behzadimagescreen;
 
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -60,6 +63,13 @@ public class ImageScreenBuilder
         final ViewGroup decor  =  (ViewGroup) context.getWindow().getDecorView();
         view = LayoutInflater.from(context).inflate(R.layout.page_image_screen,null,false);
         decor.addView(view);
+
+        Rect rectangle = new Rect();
+        Window window = context.getWindow();
+        window.getDecorView().getWindowVisibleDisplayFrame(rectangle);
+        int statusBarHeight = rectangle.top;
+        int contentViewTop =  context.getWindow().findViewById(Window.ID_ANDROID_CONTENT).getTop();
+        //view.setTop(contentViewTop);
         Picasso.with(context).load(images[0])
                 .into((ImageView) view.findViewById(R.id.img));
         ((PhotoView)view.findViewById(R.id.img)).setAllowParentInterceptOnEdge(true);
@@ -85,6 +95,7 @@ public class ImageScreenBuilder
             toolbar.setTitleTextColor(Color.WHITE);
             toolbar.setNavigationIcon(ContextCompat.getDrawable(context,R.drawable.ic_action_back));
             toolbar.setNavigationOnClickListener(hideClick);
+            ((FrameLayout.LayoutParams)toolbar.getLayoutParams()).topMargin = statusBarHeight;
             ImageView menuBtn = (ImageView) toolbar.findViewById(R.id.menu_btn);
             menuBtn.setVisibility(View.GONE);
             if(hasMenuButton)
