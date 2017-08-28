@@ -93,7 +93,7 @@ public class ImageScreenBuilder
             Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
             toolbar.setTitle(title);
             toolbar.setTitleTextColor(Color.WHITE);
-            toolbar.setNavigationIcon(ContextCompat.getDrawable(context,R.drawable.ic_action_back));
+            toolbar.setNavigationIcon(ContextCompat.getDrawable(context,R.drawable.b_img_screen_ic_action_back));
             toolbar.setNavigationOnClickListener(hideClick);
             ((FrameLayout.LayoutParams)toolbar.getLayoutParams()).topMargin = statusBarHeight;
             ImageView menuBtn = (ImageView) toolbar.findViewById(R.id.menu_btn);

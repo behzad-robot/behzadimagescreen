@@ -30,7 +30,7 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical|right"
             android:layout_marginRight="10dp"
-            android:src="@drawable/menu"
+            android:src="@drawable/b_img_screen_menu"
             android:id="@+id/menu_btn"
             />
     </android.support.v7.widget.Toolbar>
